@@ -1,5 +1,5 @@
 
-# BytePlatform\Laravel is Laravel PackageKit 
+# BytePlatform\Laravel is Laravel Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/byteplatform/laravel.svg?style=flat-square)](https://packagist.org/packages/byteplatform/laravel)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/byteplatform/laravel/run-tests?label=tests)](https://github.com/byteplatform/laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -68,7 +68,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [ByTech Asia](https://github.com/ByTechAsia)
-- [BytePlatform](https://github.com/byteplatform)
+- [BytePlatform](https://github.com/BytePlatform)
 - [Nguyen Van Hau](https://github.com/devhau)
 - [All Contributors](../../contributors)
 
