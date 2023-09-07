@@ -1,0 +1,42 @@
+{
+  "name": "byteplatform/laravel",
+  "license": "MIT",
+  "description": "Laravel package, merge plugin, hook filter action",
+  "authors": [
+    {
+      "name": "Nguyen Van Hau",
+      "email": "nguyenvanhau.soft@gmail.com",
+      "role": "Developer",
+      "homepage": "https://github.com/devhau"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "composer-plugin-api": "^1.1||^2.0"
+  },
+  "require-dev": {},
+  "extra": {
+    "laravel": {
+      "providers": [],
+      "aliases": {}
+    },
+    "branch-alias": {
+      "dev-master": "2.x-dev"
+    },
+    "class": "BytePlatform\\Laravel\\Plugin\\MergePlugin"
+  },
+  "autoload": {
+    "files": [
+      "helpers/constraint.php",
+      "helpers/function.php"
+    ],
+    "psr-4": {
+      "BytePlatform\\Laravel\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+   "prefer-stable": true
+}
