@@ -67,7 +67,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [ByTech Asia](https://github.com/ByTechAsia)
+- [ByTech Asia](https://github.com/ByteAsia)
 - [BytePlatform](https://github.com/BytePlatform)
 - [Nguyen Van Hau](https://github.com/devhau)
 - [All Contributors](../../contributors)
