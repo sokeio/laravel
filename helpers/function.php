@@ -4,6 +4,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
 use BytePlatform\Laravel\Action;
 use BytePlatform\Laravel\Filter;
+use BytePlatform\Laravel\Pipe\Pipe;
 
 if (!function_exists('add_action')) {
     /**
@@ -184,5 +185,21 @@ if (!function_exists('has_view_scope')) {
             }
         }
         return View::exists($view);
+    }
+}
+
+
+
+if ( ! function_exists('is_enum') ) {
+    function is_enum(object $potentialEnum): bool
+    {
+        return $potentialEnum instanceof StringBackedEnum || $potentialEnum instanceof BackedEnum || $potentialEnum instanceof IntBackedEnum;
+    }
+}
+
+if ( ! function_exists('pipe') ) {
+    function pipe(mixed $passable = null): Pipe
+    {
+        return $passable ? app(Pipe::class)->send($passable) : app(Pipe::class);
     }
 }
