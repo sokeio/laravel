@@ -47,7 +47,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
      */
     public function __get($key)
     {
-        if (method_exists($this->__parent, 'get' . Str::studly($key) . 'Data'))
+        if ($this->__parent && method_exists($this->__parent, 'get' . Str::studly($key) . 'Data'))
             return $this->__parent->{'get' . Str::studly($key) . 'Data'}($this);
         if (method_exists($this, 'get' . Str::studly($key) . 'Data'))
             return $this->{'get' . Str::studly($key) . 'Data'}();
@@ -68,7 +68,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
             $value2->setData($value);
             $value = $value2;
         }
-        if (method_exists($this->__parent, 'set' . Str::studly($key) . 'Data'))
+        if ($this->__parent && method_exists($this->__parent, 'set' . Str::studly($key) . 'Data'))
             return $this->__parent->{'set' . Str::studly($key) . 'Data'}($this, $value);
         if (method_exists($this, 'set' . Str::studly($key) . 'Data'))
             return $this->{'set' . Str::studly($key) . 'Data'}($value);
@@ -85,7 +85,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
      */
     public function __isset($key)
     {
-        if (method_exists($this->__parent, 'get' . Str::studly($key) . 'Data'))
+        if ($this->__parent && method_exists($this->__parent, 'get' . Str::studly($key) . 'Data'))
             return true;
         if (method_exists($this, 'get' . Str::studly($key) . 'Data'))
             return true;
@@ -122,7 +122,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
             $this->__data[] = $value;
             return;
         }
-        if (method_exists($this->__parent, 'set' . Str::studly($offset) . 'Data'))
+        if ($this->__parent && method_exists($this->__parent, 'set' . Str::studly($offset) . 'Data'))
             return $this->__parent->{'set' . Str::studly($offset) . 'Data'}($this, $value);
         if (method_exists($this, 'set' . Str::studly($offset) . 'Data'))
             return $this->{'set' . Str::studly($offset) . 'Data'}($value);
@@ -138,7 +138,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
      */
     public function offsetExists($offset)
     {
-        if (method_exists($this->__parent, 'get' . Str::studly($offset) . 'Data'))
+        if ($this->__parent && method_exists($this->__parent, 'get' . Str::studly($offset) . 'Data'))
             return true;
         if (method_exists($this, 'get' . Str::studly($offset) . 'Data'))
             return true;
@@ -166,7 +166,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        if (!is_null($offset) && method_exists($this->__parent, 'get' . Str::studly($offset) . 'Data'))
+        if ($this->__parent && !is_null($offset) && method_exists($this->__parent, 'get' . Str::studly($offset) . 'Data'))
             return $this->__parent->{'get' . Str::studly($offset) . 'Data'}($this);
         if (!is_null($offset) && method_exists($this, 'get' . Str::studly($offset) . 'Data'))
             return $this->{'get' . Str::studly($offset) . 'Data'}();
