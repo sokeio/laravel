@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Plugin;
+namespace Sokeio\Laravel\Plugin;
 
 use Composer\Composer;
 use Composer\DependencyResolver\Operation\InstallOperation;
@@ -217,7 +217,7 @@ class MergePlugin implements PluginInterface, EventSubscriberInterface
      *
      * @param array $patterns List of files/glob patterns
      * @param bool $required Are the patterns required to match files?
-     * @throws \BytePlatform\Laravel\Exceptions\MissingFileException when required and a pattern returns no
+     * @throws \Sokeio\Laravel\Exceptions\MissingFileException when required and a pattern returns no
      *      results
      */
     protected function mergeFiles(array $patterns, $required = false)
@@ -227,7 +227,7 @@ class MergePlugin implements PluginInterface, EventSubscriberInterface
         $files = array_map(
             static function ($files, $pattern) use ($required) {
                 if ($required && !$files) {
-                    throw new \BytePlatform\Laravel\Exceptions\MissingFileException(
+                    throw new \Sokeio\Laravel\Exceptions\MissingFileException(
                         "merge-plugin: No files matched required '{$pattern}'"
                     );
                 }

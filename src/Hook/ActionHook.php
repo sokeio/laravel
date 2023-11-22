@@ -1,8 +1,8 @@
 <?php
 
-namespace BytePlatform\Laravel\Hook;
+namespace Sokeio\Laravel\Hook;
 
-use BytePlatform\Laravel\WithHookListener;
+use Sokeio\Laravel\WithHookListener;
 
 class ActionHook
 {

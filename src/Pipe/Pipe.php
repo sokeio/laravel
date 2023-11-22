@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Pipe;
+namespace Sokeio\Laravel\Pipe;
 
 use Closure;
 use Illuminate\Contracts\Pipeline\Pipeline;

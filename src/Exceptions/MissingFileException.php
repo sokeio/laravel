@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Exceptions;
+namespace Sokeio\Laravel\Exceptions;
 
 use RuntimeException;
 

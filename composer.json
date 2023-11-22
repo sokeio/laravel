@@ -1,5 +1,5 @@
 {
-  "name": "byteplatform/laravel",
+  "name": "sokeio/laravel",
   "license": "MIT",
   "description": "Laravel package, merge plugin, hook filter action",
   "authors": [
@@ -23,7 +23,7 @@
     "branch-alias": {
       "dev-master": "2.x-dev"
     },
-    "class": "BytePlatform\\Laravel\\Plugin\\MergePlugin"
+    "class": "Sokeio\\Laravel\\Plugin\\MergePlugin"
   },
   "autoload": {
     "files": [
@@ -31,7 +31,7 @@
       "helpers/function.php"
     ],
     "psr-4": {
-      "BytePlatform\\Laravel\\": "src/"
+      "Sokeio\\Laravel\\": "src/"
     }
   },
   "config": {

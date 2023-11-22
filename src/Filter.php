@@ -1,22 +1,22 @@
 <?php
 
-namespace BytePlatform\Laravel;
+namespace Sokeio\Laravel;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * 
  * @method static mixed addListener(string|array $hook, mixed $callback,int  $priority)
- * @method static \BytePlatform\Laravel\Hook\FilterHook removeListener(string  $hook)
+ * @method static \Sokeio\Laravel\Hook\FilterHook removeListener(string  $hook)
  * @method static array getListeners()
  * @method static mixed fire(string  $action,array  $args)
  *
- * @see \BytePlatform\Laravel\Filter
+ * @see \Sokeio\Laravel\Filter
  */
 class Filter extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \BytePlatform\Laravel\Hook\FilterHook::class;
+        return \Sokeio\Laravel\Hook\FilterHook::class;
     }
 }

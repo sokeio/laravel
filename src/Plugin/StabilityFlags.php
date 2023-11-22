@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Plugin;
+namespace Sokeio\Laravel\Plugin;
 
 use Composer\Package\BasePackage;
 use Composer\Package\Version\VersionParser;

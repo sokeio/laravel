@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Plugin;
+namespace Sokeio\Laravel\Plugin;
 /**
  * Adapted from
  * http://cgit.drupalcode.org/drupal/tree/core/lib/Drupal/Component/Utility/NestedArray.php

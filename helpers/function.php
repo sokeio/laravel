@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
-use BytePlatform\Laravel\Action;
-use BytePlatform\Laravel\Filter;
-use BytePlatform\Laravel\Pipe\Pipe;
+use Sokeio\Laravel\Action;
+use Sokeio\Laravel\Filter;
+use Sokeio\Laravel\Pipe\Pipe;
 
 if (!function_exists('add_action')) {
     /**

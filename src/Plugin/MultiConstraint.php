@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Plugin;
+namespace Sokeio\Laravel\Plugin;
 
 use Composer\Semver\Constraint\ConstraintInterface;
 use Composer\Semver\Constraint\EmptyConstraint;

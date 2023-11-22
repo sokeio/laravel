@@ -1,14 +1,14 @@
 <?php
 
-namespace BytePlatform\Laravel;
+namespace Sokeio\Laravel;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
-use BytePlatform\Laravel\Exceptions\InvalidPackage;
-use BytePlatform\Laravel\ServicePackage;
+use Sokeio\Laravel\Exceptions\InvalidPackage;
+use Sokeio\Laravel\ServicePackage;
 use ReflectionClass;
 
 trait WithServiceProvider

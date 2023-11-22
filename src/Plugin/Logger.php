@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel\Plugin;
+namespace Sokeio\Laravel\Plugin;
 
 use Composer\IO\IOInterface;
 

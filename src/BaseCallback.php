@@ -1,6 +1,6 @@
 <?php
 
-namespace BytePlatform\Laravel;
+namespace Sokeio\Laravel;
 
 use Illuminate\Support\Traits\Macroable;
 
