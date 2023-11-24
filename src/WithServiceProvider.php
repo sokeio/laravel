@@ -78,7 +78,7 @@ trait WithServiceProvider
                 : resource_path('lang/' . $langPath);
         }
 
-        if ($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole() || env('SOKEIO_SETUP', false)) {
             foreach ($this->package->configFileNames as $configFileName) {
                 if (File::exists($this->package->basePath("/../config/{$configFileName}.php"))) {
                     $this->publishes([
