@@ -1,9 +1,7 @@
 
-# Sokeio\Laravel is Laravel Package
+# Laravel Package Base
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sokeio/laravel.svg?style=flat-square)](https://packagist.org/packages/sokeio/laravel)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/sokeio/laravel/run-tests?label=tests)](https://github.com/sokeio/laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/sokeio/laravel/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/sokeio/laravel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/sokeio/laravel.svg?style=flat-square)](https://packagist.org/packages/sokeio/laravel)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
