@@ -40,10 +40,14 @@ class BaseCallback
         }
         return $valueOrCallback;
     }
+    protected function checkKey($__key)
+    {
+        return  isset($this->__data[$__key]);
+    }
     protected function getValue($__key, $__default = null)
     {
         if (isset($this->__dataCache[$__key])) return $this->__dataCache[$__key];
-        $valueOrCallback = isset($this->__data[$__key]) ? $this->__data[$__key] : $__default;
+        $valueOrCallback = $this->checkKey($__key) ? $this->__data[$__key] : $__default;
         return ($this->__dataCache[$__key] = ($this->getValueByCallback($valueOrCallback) ?? $__default));
     }
     protected function setKeyValue($__key, $value)
