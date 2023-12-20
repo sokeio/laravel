@@ -54,6 +54,7 @@ class BaseCallback
     {
         if (!isset($this->__data[$__key]) ||  !$safeKey) {
             $this->__data[$__key] = $value;
+            if (isset($this->__dataCache[$__key])) unset($this->__dataCache[$__key]);
         }
         return $this;
     }
