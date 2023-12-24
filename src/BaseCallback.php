@@ -44,9 +44,9 @@ class BaseCallback
     {
         return  isset($this->__data[$__key]);
     }
-    protected function getValue($__key, $__default = null)
+    protected function getValue($__key, $__default = null, $withoutCache = false)
     {
-        if (isset($this->__dataCache[$__key])) return $this->__dataCache[$__key];
+        if (!$withoutCache && isset($this->__dataCache[$__key])) return $this->__dataCache[$__key];
         $valueOrCallback = $this->checkKey($__key) ? $this->__data[$__key] : $__default;
         return ($this->__dataCache[$__key] = ($this->getValueByCallback($valueOrCallback) ?? $__default));
     }
