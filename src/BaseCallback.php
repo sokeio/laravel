@@ -9,6 +9,17 @@ class BaseCallback
     use Macroable;
     private $__data = [];
     private $__dataCache = [];
+    private $__disableCache = false;
+    public function DisableCache()
+    {
+        $this->__disableCache = true;
+        return $this;
+    }
+    public function EnableCache()
+    {
+        $this->__disableCache = false;
+        return $this;
+    }
     public function Clear()
     {
         $this->__data = [];
@@ -46,7 +57,7 @@ class BaseCallback
     }
     protected function getValue($__key, $__default = null, $withoutCache = false)
     {
-        if (!$withoutCache && isset($this->__dataCache[$__key])) return $this->__dataCache[$__key];
+        if (!$this->__disableCache && !$withoutCache && isset($this->__dataCache[$__key])) return $this->__dataCache[$__key];
         $valueOrCallback = $this->checkKey($__key) ? $this->__data[$__key] : $__default;
         return ($this->__dataCache[$__key] = ($this->getValueByCallback($valueOrCallback) ?? $__default));
     }
