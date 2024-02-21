@@ -2,8 +2,10 @@
 
 namespace Sokeio\Laravel;
 
+use Illuminate\Support\Traits\Macroable;
 trait WithCallback
 {
+    use Macroable;
     private $__data = [];
     private $__dataCache = [];
     private $__disableCache = false;
