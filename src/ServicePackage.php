@@ -72,7 +72,7 @@ class ServicePackage
     {
         return Str::after($this->name, 'laravel-');
     }
-    public function RouteWeb(bool $hasRouteWeb = true): self
+    public function routeWeb(bool $hasRouteWeb = true): self
     {
         $this->hasRouteWeb = $hasRouteWeb;
 

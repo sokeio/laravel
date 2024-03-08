@@ -8,7 +8,7 @@ class JsonData implements \ArrayAccess, \JsonSerializable
 {
     protected $__parent;
     private $__data;
-    public static function Create($data = null, $parent = null): self
+    public static function create($data = null, $parent = null): self
     {
         return new self($data, $parent);
     }
