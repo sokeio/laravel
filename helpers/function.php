@@ -124,11 +124,11 @@ if (!function_exists('view_scope')) {
      * 
      * @param  string|null  $view
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $data
-     * @param  array  $mergeData
+     * @param  string|null   $viewDefault
      * @param  bool  $isModal
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    function view_scope($view = null, $data = [], $mergeData = [], $isModal = false)
+    function view_scope($view = null, $data = [], $viewDefault = null, $isModal = false)
     {
         $tempView = $view;
         if ($view && $arr = explode('::', $view)) {
@@ -154,10 +154,13 @@ if (!function_exists('view_scope')) {
             }
             if (View::exists($viewModal)) {
                 $data['formViewInclude'] = $tempView;
-                return view($viewModal, $data, $mergeData);
+                return view($viewModal, $data);
             }
         }
-        return view($tempView, $data, $mergeData);
+        if ($viewDefault && !View::exists($tempView)) {
+            $tempView = $viewDefault;
+        }
+        return view($tempView, $data);
     }
 }
 
@@ -190,14 +193,14 @@ if (!function_exists('has_view_scope')) {
 
 
 
-if ( ! function_exists('is_enum') ) {
+if (!function_exists('is_enum')) {
     function is_enum(object $potentialEnum): bool
     {
         return $potentialEnum instanceof StringBackedEnum || $potentialEnum instanceof BackedEnum || $potentialEnum instanceof IntBackedEnum;
     }
 }
 
-if ( ! function_exists('pipe') ) {
+if (!function_exists('pipe')) {
     function pipe(mixed $passable = null): Pipe
     {
         return $passable ? app(Pipe::class)->send($passable) : app(Pipe::class);
