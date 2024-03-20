@@ -11,19 +11,14 @@
     }
   ],
   "require": {
-    "php": ">=7.4.0",
-    "composer-plugin-api": "^1.1||^2.0"
+    "php": ">=7.4.0"
   },
   "require-dev": {},
   "extra": {
     "laravel": {
       "providers": [],
       "aliases": {}
-    },
-    "branch-alias": {
-      "dev-master": "2.x-dev"
-    },
-    "class": "Sokeio\\Laravel\\Plugin\\MergePlugin"
+    }
   },
   "autoload": {
     "files": [
@@ -38,5 +33,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-   "prefer-stable": true
+  "prefer-stable": true
 }

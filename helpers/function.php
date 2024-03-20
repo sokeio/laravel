@@ -6,66 +6,67 @@ use Sokeio\Laravel\Action;
 use Sokeio\Laravel\Filter;
 use Sokeio\Laravel\Pipe\Pipe;
 
-if (!function_exists('add_action')) {
+define('THEME_SCOPE', 'theme::scope.');
+if (!function_exists('addAction')) {
     /**
      * @param  string | array  $hook
      * @param $callback
      * @param  int  $priority
      * @param  int  $arguments
      */
-    function add_action($hook, $callback, int $priority = 20, int $arguments = 1)
+    function addAction($hook, $callback, int $priority = 20, int $arguments = 1)
     {
         Action::addListener($hook, $callback, $priority, $arguments);
     }
 }
 
-if (!function_exists('remove_action')) {
+if (!function_exists('removeAction')) {
     /**
      * @param  string  $hook
      */
-    function remove_action($hook, $callback = null)
+    function removeAction($hook, $callback = null)
     {
         Action::removeListener($hook, $callback);
     }
 }
-if (!function_exists('do_action')) {
+if (!function_exists('doAction')) {
     /**
      * @param  string  $hook
      */
-    function do_action()
+    function doAction()
     {
         $args = func_get_args();
         Action::fire(array_shift($args), $args);
     }
 }
 
-if (!function_exists('add_filter')) {
+if (!function_exists('addFilter')) {
     /**
      * @param  string | array  $hook
      * @param $callback
      * @param  int  $priority
      * @param  int  $arguments
      */
-    function add_filter($hook, $callback, int $priority = 20, int $arguments = 1)
+    function addFilter($hook, $callback, int $priority = 20, int $arguments = 1)
     {
         Filter::addListener($hook, $callback, $priority, $arguments);
     }
 }
-if (!function_exists('remove_filter')) {
+if (!function_exists('removeFilter')) {
     /**
      * @param  string  $hook
      */
-    function remove_filter($hook, $callback)
+    function removeFilter($hook, $callback)
     {
         Filter::removeListener($hook, $callback);
     }
 }
 
-if (!function_exists('apply_filters')) {
+if (!function_exists('applyFilters')) {
     /**
      * @return mixed
      */
-    function apply_filters()
+    function applyFilters()
     {
         $args = func_get_args();
 
@@ -73,13 +74,13 @@ if (!function_exists('apply_filters')) {
     }
 }
 
-if (!function_exists('get_hooks')) {
+if (!function_exists('getHooks')) {
     /**
      * @param  string|null  $name
      * @param  bool  $isFilter
      * @return array
      */
-    function get_hooks(?string $name = null, bool $isFilter = true): array
+    function getHooks(?string $name = null, bool $isFilter = true): array
     {
         if ($isFilter) {
             $listeners = Filter::getListeners();
@@ -96,13 +97,13 @@ if (!function_exists('get_hooks')) {
 }
 
 
-if (!function_exists('has_hooks')) {
+if (!function_exists('hasHooks')) {
     /**
      * @param  string|null  $name
      * @param  bool  $isFilter
      * @return bool
      */
-    function has_hooks(?string $name = null, bool $isFilter = true): bool
+    function hasHooks(?string $name = null, bool $isFilter = true): bool
     {
         if (!$name || empty($name)) {
             return false;
@@ -118,7 +119,7 @@ if (!function_exists('has_hooks')) {
 }
 
 
-if (!function_exists('view_scope')) {
+if (!function_exists('viewScope')) {
     /**
      * Get the evaluated view contents for the given view and Support for theme
      * 
@@ -128,34 +129,19 @@ if (!function_exists('view_scope')) {
      * @param  bool  $isModal
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    function view_scope($view = null, $data = [], $viewDefault = null, $isModal = false)
+    function viewScope($view = null, $data = [], $viewDefault = null)
     {
         $tempView = $view;
-        if ($view && $arr = explode('::', $view)) {
-
-            if (count($arr) == 1) {
-                if (View::exists('theme::scope.' . $arr[0])) {
-                    $tempView = 'theme::scope.' . $arr[0];
-                }
-            } else if (count($arr) == 2) {
-                if (View::exists('theme::scope.' . $arr[1])) {
-                    $tempView = 'theme::scope.' . $arr[1];
-                }
-                if (View::exists('theme::scope.' . $arr[0] . '.' . $arr[1])) {
-                    $tempView = 'theme::scope.' . $arr[0] . '.' . $arr[1];
-                }
-            }
+        $arr = explode('::', $view);
+        $len = count($arr);
+        if ($len == 1 && View::exists(THEME_SCOPE . $arr[0])) {
+            $tempView = THEME_SCOPE . $arr[0];
         }
-        $data['isModal'] = $isModal;
-        if ($isModal) {
-            $viewModal = 'theme::common.modal.index';
-            if (isset($data['viewModal']) && View::exists($data['viewModal'])) {
-                $viewModal = $data['viewModal'];
-            }
-            if (View::exists($viewModal)) {
-                $data['formViewInclude'] = $tempView;
-                return view($viewModal, $data);
-            }
+        if ($len == 2 && View::exists(THEME_SCOPE . $arr[1])) {
+            $tempView = THEME_SCOPE . $arr[1];
+        }
+        if ($len == 2 && View::exists(THEME_SCOPE . $arr[0] . '.' . $arr[1])) {
+            $tempView = THEME_SCOPE . $arr[0] . '.' . $arr[1];
         }
         if ($viewDefault && !View::exists($tempView)) {
             $tempView = $viewDefault;
@@ -164,7 +150,7 @@ if (!function_exists('view_scope')) {
     }
 }
 
-if (!function_exists('has_view_scope')) {
+if (!function_exists('hasViewScope')) {
     /**
      * Get the evaluated view contents for the given view and Support for theme
      * 
@@ -173,30 +159,36 @@ if (!function_exists('has_view_scope')) {
      * @param  array  $mergeData
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    function has_view_scope($view = null)
+    function hasViewScope($view = null)
     {
-        if ($view && $arr = explode('::', $view)) {
-
-            if (count($arr) == 1) {
-                if (View::exists('theme::scope.' . $arr[0]))
-                    return true;
-            } else if (count($arr) == 2) {
-                if (View::exists('theme::scope.' . $arr[0] . '.' . $arr[1]))
-                    return true;
-                if (View::exists('theme::scope.' . $arr[1]))
-                    return true;
-            }
+        if (!$view) {
+            return false;
         }
-        return View::exists($view);
+        $arr = explode('::', $view);
+        $len = count($arr);
+        $flg = false;
+        if ($len == 1 && View::exists(THEME_SCOPE . $arr[0])) {
+            $flg = true;
+        }
+        if ($len == 2 && View::exists(THEME_SCOPE . $arr[1])) {
+            $flg = true;
+        }
+        if ($len == 2 && View::exists(THEME_SCOPE . $arr[0] . '.' . $arr[1])) {
+            $flg = true;
+        }
+
+        return $flg || View::exists($view);
     }
 }
 
 
 
-if (!function_exists('is_enum')) {
-    function is_enum(object $potentialEnum): bool
+if (!function_exists('isEnum')) {
+    function isEnum(object $potentialEnum): bool
     {
-        return $potentialEnum instanceof StringBackedEnum || $potentialEnum instanceof BackedEnum || $potentialEnum instanceof IntBackedEnum;
+        return $potentialEnum instanceof StringBackedEnum
+            || $potentialEnum instanceof BackedEnum
+            || $potentialEnum instanceof IntBackedEnum;
     }
 }
 

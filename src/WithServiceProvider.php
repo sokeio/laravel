@@ -39,7 +39,7 @@ trait WithServiceProvider
             throw InvalidPackage::nameIsRequired();
         }
         if ($this->withHook) {
-            do_action(PACKAGE_SERVICE_PROVIDER_REGISTER, $this);
+            doAction(PACKAGE_SERVICE_PROVIDER_REGISTER, $this);
         }
 
         foreach ($this->package->configFileNames as $configFileName) {
@@ -163,7 +163,7 @@ trait WithServiceProvider
 
         if ($this->withHook) {
 
-            do_action(PACKAGE_SERVICE_PROVIDER_BOOT, $this);
+            doAction(PACKAGE_SERVICE_PROVIDER_BOOT, $this);
         }
 
         if ($this->package->hasTranslations) {
